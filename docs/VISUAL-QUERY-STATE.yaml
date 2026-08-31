@@ -1,0 +1,7 @@
+state: executing
+queries:
+  - figma_pointer
+  - showcase_images
+  - mirror_source_claims
+  - icon_component_mirroring
+  - golden_status_labels
