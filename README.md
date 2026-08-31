@@ -114,14 +114,15 @@ Storybook contains:
 
 - `MoonWitness/00 Component First Workspace` — constitution → tokens → raw contract → component families → domain instruments → templates → component readiness gate.
 - `MoonWitness/01 UX Flow Workbench` — task entry → primary instrument → object selection → contextual detail → evidence/provenance → return path, shared states, responsive recomposition, and `BLOCKED_BY_UX_FLOW` review.
+- `MoonWitness/02 Master Pages` — component- and UX-gated application-page compositions for the Observatory Home/Monthly Report landing, all eight active public task surfaces, all four current Command Center routes, shared states, and mobile recomposition.
 - `MoonWitness/Full Showcase`
 - `MoonWitness/Benchmark Screens` — the five golden reference screens: Command Center, Evidence Cathedral, Geo Intelligence, Four Revelation Lens, and Mobile Instrument
-- `MoonWitness/Pages` — Command Center, Observatory, Evidence Ledger, Disaster Map, Correlation Engine, Practice-Level Review, Four Revelation Lens, Candidate Pipeline, Mobile Instrument Mode, Theme Lab
+- `MoonWitness/Pages` — earlier page-level showcase references retained for comparison and compatibility review
 - `MoonWitness/Component Lab`
 - `MoonWitness/Data Visualization`
 - `MoonWitness/Evidence System`
 
-The first two workbenches are design-execution controls, not product routes. Golden page work should be reviewed against both before a generated showcase image is accepted.
+The numbered workbenches are design-execution controls, not product routes. New golden page work should be reviewed in order: component readiness → UX-flow readiness → master page → responsive verification → single-screen export.
 
 ## Compatibility bridge integration
 
@@ -194,7 +195,16 @@ The MoonWitness-specific Agent Skill lives at:
 
 - `skills/moonwitness-openpencil/SKILL.md`
 
-The skill adapts the official OpenPencil CLI/MCP workflow to MoonWitness component-first design, UX-flow readiness, responsive composition, visual verification, and repository ownership rules.
+The versioned OpenPencil design-execution pack lives under:
+
+- `openpencil/README.md` — execution and verification workflow
+- `openpencil/tokens.json` — implementation-aligned visual tokens
+- `openpencil/manifest.json` — screen inventory, maturity and immutable rules
+- `openpencil/00-foundations.jsx` → `03-ux-flow.jsx` — foundations through UX execution control
+- `openpencil/pages/*.jsx` — one design-JSX source per active golden application screen
+- `openpencil/states/` and `openpencil/responsive/` — shared state and mobile recomposition references
+
+The skill adapts the official OpenPencil CLI/MCP workflow to MoonWitness component-first design, UX-flow readiness, responsive composition, visual verification, and repository ownership rules. Each golden source is intended to be rendered and exported independently; one screen remains one source and one export.
 
 Recommended upstream tooling:
 
@@ -226,4 +236,4 @@ Changes are verified on `dev` and promoted to `main` through review/CI. Historic
 
 ## Status
 
-**v0.3.x showcase bridge** — cinematic shell experiments, component-first and UX-flow review workbenches, OpenPencil/Figma design execution guidance, page-level instruments, interaction states, signature data visualizations, evidence/provenance references, multi-page Storybook showcase, and curated visual references are available. Canonical reusable UI ownership remains in `moonwitness-frontend-platform`.
+**v0.3.x showcase bridge** — cinematic shell experiments, component-first and UX-flow review workbenches, master application-page compositions, OpenPencil/Figma design execution guidance and sources, interaction states, signature data visualizations, evidence/provenance references, multi-page Storybook showcase, and curated visual references are available. Canonical reusable UI ownership remains in `moonwitness-frontend-platform`.
