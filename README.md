@@ -6,7 +6,7 @@ Public showcase, compatibility bridge, and experimental visual reference for Moo
 
 ## Scope
 
-This repository provides executable Storybook showcases, experimental observatory instruments, visual-fidelity exploration, curated design references, compatibility mirrors, and Figma-linked design evidence.
+This repository provides executable Storybook showcases, experimental observatory instruments, visual-fidelity exploration, curated design references, compatibility mirrors, and Figma/OpenPencil-linked design evidence.
 
 Reusable concepts may be proven here, but production-canonical tokens, primitives, patterns, and reusable domain UI kits must be promoted to `moonwitness-frontend-platform` through the normal issue/PR/verification workflow.
 
@@ -184,13 +184,34 @@ Do not fork canonical platform primitives in consumer applications. If a showcas
 
 Curated generated references live under `docs/showcase/`. They are visual-review assets only. They do not create product scope, prove implementation, or supersede Figma/Storybook/canonical frontend-platform contracts.
 
+## OpenPencil
+
+Preferred MoonWitness visual editor surface:
+
+- `https://pencil.moonwitness.biz.id/`
+
+The MoonWitness-specific Agent Skill lives at:
+
+- `skills/moonwitness-openpencil/SKILL.md`
+
+The skill adapts the official OpenPencil CLI/MCP workflow to MoonWitness component-first design, UX-flow readiness, responsive composition, visual verification, and repository ownership rules.
+
+Recommended upstream tooling:
+
+```bash
+bun add -g @open-pencil/cli @open-pencil/mcp
+npx skills add open-pencil/skills@open-pencil
+```
+
+OpenPencil is a design execution/review surface. It does not supersede the Blueprint, Storybook gates, or canonical production ownership.
+
 ## Figma
 
 Design reference: **MoonWitness Design System — Experimental Observatory UI**
 
 https://www.figma.com/design/LP5AwOwe6QGeXRNpeZWsjd
 
-Figma and Storybook are visual/specification tools. Storybook is the executable visual workbench when Figma access is constrained. Canonical reusable production implementation remains governed by `moonwitness-frontend-platform`.
+Figma and OpenPencil are visual/specification tools. Storybook is the executable visual workbench. Canonical reusable production implementation remains governed by `moonwitness-frontend-platform`.
 
 ## Repository policy
 
@@ -205,4 +226,4 @@ Changes are verified on `dev` and promoted to `main` through review/CI. Historic
 
 ## Status
 
-**v0.3.x showcase bridge** — cinematic shell experiments, component-first and UX-flow review workbenches, page-level instruments, interaction states, signature data visualizations, evidence/provenance references, multi-page Storybook showcase, and curated visual references are available. Canonical reusable UI ownership remains in `moonwitness-frontend-platform`.
+**v0.3.x showcase bridge** — cinematic shell experiments, component-first and UX-flow review workbenches, OpenPencil/Figma design execution guidance, page-level instruments, interaction states, signature data visualizations, evidence/provenance references, multi-page Storybook showcase, and curated visual references are available. Canonical reusable UI ownership remains in `moonwitness-frontend-platform`.
