@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "open-pencil": {
+      "command": "openpencil-mcp",
+      "env": {
+        "OPENPENCIL_MCP_ROOT": "<ABSOLUTE_PATH_TO_MOONWITNESS_DESIGN_WORKSPACE>"
+      }
+    }
+  }
+}
