@@ -112,12 +112,16 @@ pnpm build-storybook
 
 Storybook contains:
 
+- `MoonWitness/00 Component First Workspace` — constitution → tokens → raw contract → component families → domain instruments → templates → component readiness gate.
+- `MoonWitness/01 UX Flow Workbench` — task entry → primary instrument → object selection → contextual detail → evidence/provenance → return path, shared states, responsive recomposition, and `BLOCKED_BY_UX_FLOW` review.
 - `MoonWitness/Full Showcase`
 - `MoonWitness/Benchmark Screens` — the five golden reference screens: Command Center, Evidence Cathedral, Geo Intelligence, Four Revelation Lens, and Mobile Instrument
 - `MoonWitness/Pages` — Command Center, Observatory, Evidence Ledger, Disaster Map, Correlation Engine, Practice-Level Review, Four Revelation Lens, Candidate Pipeline, Mobile Instrument Mode, Theme Lab
 - `MoonWitness/Component Lab`
 - `MoonWitness/Data Visualization`
 - `MoonWitness/Evidence System`
+
+The first two workbenches are design-execution controls, not product routes. Golden page work should be reviewed against both before a generated showcase image is accepted.
 
 ## Compatibility bridge integration
 
@@ -186,7 +190,7 @@ Design reference: **MoonWitness Design System — Experimental Observatory UI**
 
 https://www.figma.com/design/LP5AwOwe6QGeXRNpeZWsjd
 
-Figma and Storybook are visual/specification tools. Canonical reusable production implementation remains governed by `moonwitness-frontend-platform`.
+Figma and Storybook are visual/specification tools. Storybook is the executable visual workbench when Figma access is constrained. Canonical reusable production implementation remains governed by `moonwitness-frontend-platform`.
 
 ## Repository policy
 
@@ -201,4 +205,4 @@ Changes are verified on `dev` and promoted to `main` through review/CI. Historic
 
 ## Status
 
-**v0.3.x showcase bridge** — cinematic shell experiments, page-level instruments, interaction states, signature data visualizations, evidence/provenance references, multi-page Storybook showcase, and curated visual references are available. Canonical reusable UI ownership remains in `moonwitness-frontend-platform`.
+**v0.3.x showcase bridge** — cinematic shell experiments, component-first and UX-flow review workbenches, page-level instruments, interaction states, signature data visualizations, evidence/provenance references, multi-page Storybook showcase, and curated visual references are available. Canonical reusable UI ownership remains in `moonwitness-frontend-platform`.
