@@ -1,6 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 import '../styles/tokens.css'
 import '../styles/system.css'
+import '../styles/cinematic.css'
 
 export type MoonWitnessTheme = 'crimson' | 'cyan' | 'amber' | 'emerald' | 'violet' | 'neutral' | 'myth-fade'
 
