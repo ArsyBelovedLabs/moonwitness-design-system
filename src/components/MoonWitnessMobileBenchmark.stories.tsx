@@ -35,7 +35,7 @@ export const MobileInstrumentGolden: Story = {
           />
           <MetricRail items={metrics} />
           <div style={{ padding: 14, display: 'grid', gap: 12 }}>
-            <TruthAperture label="TRUTH INTEGRITY" value={87} detail="repository-grounded" tone="active" />
+            <TruthAperture label="TRUTH INTEGRITY" score={87} detail="repository-grounded" tone="active" />
             <MapRift
               title="FIELD / GEO CONTEXT"
               points={[
