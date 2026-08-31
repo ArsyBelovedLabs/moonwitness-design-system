@@ -1,8 +1,8 @@
 :root {
-  --mw-surface-void: #050709;
-  --mw-surface-panel: #0a0f14;
-  --mw-surface-raised: #10171e;
-  --mw-surface-glass: rgba(12,17,22,.82);
+  --mw-surface-void: #040506;
+  --mw-surface-panel: #080b0e;
+  --mw-surface-raised: #0e1419;
+  --mw-surface-glass: rgba(8,11,14,.86);
   --mw-text-primary: #f0eadf;
   --mw-text-muted: #7f8a95;
   --mw-accent-primary: #c93628;

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { MoonWitnessProvider } from './MoonWitnessProvider'
 import { CausalityGuardrail, CommandDeck, EvidenceSpine, MapRift, MissionRail, ObservationShard, OrbitalCore, ReliabilityPrism, SignalBeacon, TemporalOrrery } from './Observatory'
 import { ArchiveGate, ChronologyTrack, InspectorDock, InstrumentGrid, InstrumentHeader, MetricRail, RevelationLens } from './PagePrimitives'
+import { TruthAperture } from './DataVizPrimitives'
 
 const meta = { title: 'MoonWitness/Pages', parameters: { layout: 'fullscreen' } } satisfies Meta
 export default meta
@@ -44,7 +45,7 @@ export const EvidenceLedger: Story = { render: () => stage(<>
 
 export const DisasterMap: Story = { render: () => stage(<>
   <InstrumentHeader code="04 / GEO" title="August 2026 — Disaster Map" subtitle="Disaster events remain independently sourced. Mythos/ritual observations are contextual overlays only." status={<SignalBeacon tone="warning" label="NO CAUSAL ASSUMPTION"/>}/>
-  <div className="mw-page-stage__body"><CausalityGuardrail/><InstrumentGrid><div className="span-9"><MapRift title="INDONESIA / DISASTER LAYER" points={[{id:'a',x:29,y:47,label:'event',tone:'danger',size:15},{id:'b',x:55,y:60,label:'event',tone:'warning',size:12},{id:'c',x:72,y:68,label:'event',tone:'danger',size:14},{id:'d',x:19,y:38,label:'event',tone:'active',size:10}]}/></div><div className="span-3"><InspectorDock eyebrow="EVENT REGISTER" title="Independent Context">{micro([['Wildfire','natural/human mechanisms'],['Earthquake','geophysical'],['Flood','hydrometeorological'],['Observation overlay','faint / contextual']])}</InspectorDock></div><div className="span-12"><MetricRail items={[{label:'MEASURE',value:'ΔT',detail:'temporal distance'},{label:'MEASURE',value:'km',detail:'Haversine distance'},{label:'PROXIMITY',value:'≠',detail:'causality',tone:'warning'},{label:'REVIEW',value:'SEPARATE',detail:'causal finding',tone:'success'}]}/></div></InstrumentGrid></div>
+  <div className="mw-page-stage__body"><div className="mw-geo-brief"><div className="mw-geo-brief__title"><span>PRIMARY INSTRUMENT / GEO CONTEXT</span><strong>Indonesia / August 2026</strong></div><CausalityGuardrail>Proximity is a discovery measurement. It is not evidence of causation.</CausalityGuardrail></div><InstrumentGrid><div className="span-9"><MapRift title="DISASTER MAP / INDONESIA / AUGUST 2026" points={[{id:'a',x:29,y:47,label:'event',tone:'danger',size:15},{id:'b',x:55,y:60,label:'event',tone:'warning',size:12},{id:'c',x:72,y:68,label:'event',tone:'danger',size:14},{id:'d',x:19,y:38,label:'event',tone:'active',size:10}]}><div className="mw-map-rift__datum"><span>ΔT / TEMPORAL</span><span>HAVERSINE / KM</span><span>CAUSAL FINDING / SEPARATE</span></div></MapRift></div><div className="span-3"><InspectorDock eyebrow="EVENT REGISTER" title="Independent Context">{micro([['Wildfire','natural/human mechanisms'],['Earthquake','geophysical'],['Flood','hydrometeorological'],['Observation overlay','faint / contextual']])}</InspectorDock></div><div className="span-12"><MetricRail items={[{label:'MEASURE',value:'ΔT',detail:'temporal distance'},{label:'MEASURE',value:'km',detail:'Haversine distance'},{label:'PROXIMITY',value:'≠',detail:'causality',tone:'warning'},{label:'REVIEW',value:'SEPARATE',detail:'causal finding',tone:'success'}]}/></div></InstrumentGrid></div>
 </>) }
 
 export const CorrelationEngine: Story = { render: () => stage(<>
@@ -68,10 +69,23 @@ export const CandidatePipeline: Story = { render: () => stage(<>
 </>, 'violet') }
 
 export const MobileInstrumentMode: Story = { render: () => stage(<>
-  <InstrumentHeader code="MOBILE / INSTRUMENT" title="Mobile Instrument Mode" subtitle="Single-hand access, radial hierarchy and bottom-sheet inspection instead of shrinking desktop card grids."/>
-  <div className="mw-page-stage__body"><div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))',gap:18}}>{[
-    ['OBSERVATORY','Orbital focus'],['EVIDENCE','Source chain'],['DISASTER MAP','Map Rift'],['REVELATION','Four Lens']
-  ].map(([title,sub],i)=><div key={title} style={{maxWidth:330,minHeight:620,margin:'0 auto',width:'100%',padding:14,border:'1px solid var(--mw-accent-secondary)',borderRadius:34,background:'#06080b',boxShadow:'0 24px 70px rgba(0,0,0,.45)'}}><SignalBeacon tone={i===2?'warning':'active'} label={title}/><div style={{height:18}}/><OrbitalCore title={String(i+1).padStart(2,'0')} subtitle={sub} nodes={[{id:'a',label:'A',value:'•'},{id:'b',label:'B',value:'•',tone:'active'},{id:'c',label:'C',value:'•'}]}/><div style={{height:12}}/><ArchiveGate label="QUICK GATE" placeholder="Search…"/><div style={{height:12}}/><CausalityGuardrail/></div>)}</div></div>
+  <InstrumentHeader code="09 / MOBILE" title="Mobile Instrument Mode" subtitle="Single-hand access, radial hierarchy and bottom-sheet inspection instead of shrinking desktop card grids." status={<SignalBeacon tone="success" label="RECOMPOSED / READY"/>}/>
+  <div className="mw-page-stage__body">
+    <div className="mw-mobile-instrument">
+      <div className="mw-mobile-instrument__screen">
+        <InstrumentHeader code="MOBILE / 01" title="Observatory" subtitle="Evidence first; context stays bounded." status={<SignalBeacon tone="success" label="LIVE"/>}/>
+        <MetricRail items={[{label:'OBS',value:'17',detail:'signals',tone:'active'},{label:'EVID',value:'15',detail:'sources',tone:'success'},{label:'REVIEW',value:'12',detail:'issues',tone:'warning'},{label:'CAUSE',value:'0–15',detail:'/100'}]}/>
+        <div className="mw-mobile-instrument__body">
+          <TruthAperture label="TRUTH INTEGRITY" score={87} detail="repository-grounded" tone="active"/>
+          <MapRift title="FIELD / GEO CONTEXT" points={[{id:'a',x:24,y:46,tone:'danger',size:12},{id:'b',x:51,y:62,tone:'warning',size:10},{id:'c',x:73,y:38,tone:'active',size:9}]}>
+            <div style={{position:'absolute',left:14,right:14,bottom:13,display:'flex',justifyContent:'space-between',font:'700 7px ui-monospace,monospace',letterSpacing:'.12em',color:'var(--mw-text-muted)'}}><span>ΔT</span><span>DIST / KM</span><span>CONTEXT</span></div>
+          </MapRift>
+          <CausalityGuardrail/>
+        </div>
+        <nav className="mw-mobile-instrument__dock" aria-label="Mobile instrument navigation"><button className="is-active" aria-current="page" type="button">Observe</button><button type="button">Evidence</button><button type="button">Map</button><button type="button">Archive</button></nav>
+      </div>
+    </div>
+  </div>
 </>) }
 
 export const ThemeLab: Story = { render: () => <div style={{display:'grid',gridTemplateColumns:'repeat(3,minmax(0,1fr))',minHeight:'100vh'}}>{(['myth-fade','cyan','amber','emerald','violet','neutral'] as const).map(theme=><MoonWitnessProvider key={theme} theme={theme} style={{padding:20,minHeight:360}}><SignalBeacon label={theme}/><div style={{height:14}}/><ObservationShard eyebrow="THEME TOKEN" title={theme.toUpperCase()} tone="active">Same component geometry. Different semantic accent family.</ObservationShard><div style={{height:12}}/><ReliabilityPrism score={88}/></MoonWitnessProvider>)}</div> }

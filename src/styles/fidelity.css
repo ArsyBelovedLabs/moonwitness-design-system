@@ -6,22 +6,166 @@
   --mw-bronze-hi:color-mix(in srgb,var(--mw-accent-secondary) 72%,#d6b278);
   --mw-bronze-lo:color-mix(in srgb,var(--mw-accent-secondary) 34%,#2c241c);
   --mw-glass-edge:rgba(236,224,198,.08);
-  --mw-void:#030507;
+  --mw-void:#040506;
   --mw-carbon:#080b0e;
   background:
     radial-gradient(ellipse at 54% -16%,color-mix(in srgb,var(--mw-accent-primary) 14%,transparent),transparent 30%),
     radial-gradient(ellipse at 12% 72%,color-mix(in srgb,var(--mw-accent-secondary) 6%,transparent),transparent 32%),
-    linear-gradient(180deg,#030507 0%,#070a0d 45%,#020304 100%);
+    linear-gradient(180deg,#040506 0%,#070a0d 45%,#020304 100%);
 }
 
 /* Golden benchmark frames keep the reference screens calibrated at wide
    canvas sizes while preserving the same full-bleed atmosphere. */
 .mw-benchmark-stage{
+  position:relative;
+  isolation:isolate;
+  min-height:calc(100vh - 48px);
+  overflow:hidden;
   padding:clamp(22px,2.6vw,40px);
   background:
     linear-gradient(90deg,rgba(255,255,255,.012),transparent 12%,transparent 88%,rgba(255,255,255,.012)),
     linear-gradient(180deg,rgba(255,255,255,.012),transparent 24%);
 }
+.mw-benchmark-stage:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.36;
+  background:
+    radial-gradient(ellipse at 50% 18%,color-mix(in srgb,var(--mw-accent-primary) 9%,transparent),transparent 34%),
+    repeating-linear-gradient(0deg,transparent 0 5px,rgba(255,255,255,.008) 6px,transparent 7px),
+    repeating-linear-gradient(108deg,transparent 0 180px,rgba(255,255,255,.012) 181px,transparent 183px);
+  mask-image:linear-gradient(180deg,black 0 74%,transparent 100%);
+}
+.mw-benchmark-stage:after{
+  content:"";
+  position:absolute;
+  inset:14px;
+  z-index:0;
+  pointer-events:none;
+  border:1px solid color-mix(in srgb,var(--mw-accent-secondary) 12%,transparent);
+  clip-path:polygon(0 0,22px 0,22px 1px,calc(100% - 22px) 1px,calc(100% - 22px) 0,100% 0,100% 22px,calc(100% - 1px) 22px,calc(100% - 1px) calc(100% - 22px),100% calc(100% - 22px),100% 100%,calc(100% - 22px) 100%,calc(100% - 22px) calc(100% - 1px),22px calc(100% - 1px),22px 100%,0 100%,0 calc(100% - 22px),1px calc(100% - 22px),1px 22px,0 22px);
+}
+.mw-benchmark-stage> *{position:relative;z-index:1}
+.mw-page-stage > .mw-instrument-header,
+.mw-page-stage > .mw-page-stage__body{
+  width:min(100%,1560px);
+  margin-left:auto;
+  margin-right:auto;
+}
+.mw-page-stage__body{gap:clamp(18px,1.7vw,26px)}
+.mw-page-stage__body > .mw-causality-guardrail{
+  position:relative;
+  isolation:isolate;
+  border:1px solid color-mix(in srgb,var(--mw-state-warning) 32%,#34291c);
+  border-left-width:3px;
+  padding:14px 18px;
+  background:
+    linear-gradient(90deg,color-mix(in srgb,var(--mw-state-warning) 13%,transparent),transparent 58%),
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent);
+  box-shadow:inset 0 1px rgba(255,255,255,.025),0 12px 30px rgba(0,0,0,.18);
+}
+.mw-page-stage__body > .mw-causality-guardrail:after{
+  content:"MEASUREMENT / CONTEXT / REVIEW BOUNDARY";
+  position:absolute;
+  right:16px;
+  bottom:6px;
+  font:700 6px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.16em;
+  color:color-mix(in srgb,var(--mw-text-muted) 42%,transparent);
+}
+.mw-page-surface h2{
+  position:relative;
+  padding-bottom:10px;
+  border-bottom:1px solid color-mix(in srgb,var(--mw-accent-secondary) 20%,transparent);
+  color:var(--mw-text-primary);
+}
+.mw-page-surface h2:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:58px;
+  height:2px;
+  background:linear-gradient(90deg,var(--mw-accent-primary),transparent);
+}
+
+/* Keep the safety contract inside the geo instrument's visual hierarchy. */
+.mw-geo-brief{
+  display:grid;
+  grid-template-columns:minmax(180px,.75fr) minmax(0,2.25fr);
+  align-items:stretch;
+  gap:14px;
+}
+.mw-geo-brief__title{
+  display:grid;
+  align-content:center;
+  gap:8px;
+  min-height:72px;
+  padding:14px 18px;
+  border:1px solid color-mix(in srgb,var(--mw-accent-secondary) 28%,#222a31);
+  border-left:2px solid var(--mw-accent-primary);
+  background:linear-gradient(145deg,rgba(255,255,255,.018),rgba(5,7,9,.72));
+  box-shadow:inset 0 1px rgba(255,255,255,.025),0 12px 30px rgba(0,0,0,.18);
+}
+.mw-geo-brief__title span{
+  font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.16em;
+  color:var(--mw-accent-secondary);
+}
+.mw-geo-brief__title strong{
+  font:600 clamp(18px,2vw,26px)/1 Georgia,"Times New Roman",serif;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+.mw-geo-brief .mw-causality-guardrail{min-height:72px}
+
+/* Small screens expose a stable field-instrument strap and reading order. */
+.mw-mobile-instrument__statusline{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:0 4px 8px;
+  color:color-mix(in srgb,var(--mw-text-muted) 68%,transparent);
+  font:700 7px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.mw-mobile-instrument__statusline span:last-child{color:var(--mw-accent-secondary)}
+.mw-mobile-instrument__screen:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.025);
+  background:linear-gradient(180deg,rgba(255,255,255,.018),transparent 12%,transparent 86%,rgba(0,0,0,.28));
+}
+.mw-mobile-instrument__statusline,
+.mw-mobile-instrument__screen .mw-instrument-header,
+.mw-mobile-instrument__screen .mw-metric-rail,
+.mw-mobile-instrument__body{position:relative;z-index:1}
+.mw-mobile-instrument__body > .mw-truth-aperture{min-height:252px}
+.mw-mobile-instrument__body > .mw-map-rift{box-shadow:inset 0 1px rgba(255,255,255,.025),0 18px 36px rgba(0,0,0,.28)!important}
+.mw-mobile-instrument__body > .mw-map-rift .mw-map-rift__header{padding-inline:12px}
+.mw-mobile-instrument__dock button{position:relative}
+.mw-mobile-instrument__dock button:after{content:"";position:absolute;left:50%;bottom:7px;width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.36;transform:translateX(-50%)}
+.mw-mobile-instrument__dock button.is-active:after{opacity:1;box-shadow:0 0 8px currentColor}
+.mw-benchmark-stage__calibration{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  width:min(100%,1560px);
+  margin:0 auto 10px;
+  color:color-mix(in srgb,var(--mw-text-muted) 56%,transparent);
+  font:700 7px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.mw-benchmark-stage__calibration a{color:var(--mw-accent-secondary);text-decoration:none}
+.mw-benchmark-stage__calibration a:hover,.mw-benchmark-stage__calibration a:focus-visible{color:var(--mw-text-primary);text-decoration:underline}
 .mw-benchmark-stage>.mw-instrument-header,
 .mw-benchmark-stage>.mw-page-stage__body{
   width:min(100%,1560px);
@@ -37,6 +181,9 @@
 .mw-benchmark-stage--evidence .mw-observation-shard{min-height:180px}
 .mw-benchmark-stage--geo .mw-map-rift{min-height:100%}
 .mw-benchmark-stage--geo .mw-causality-lattice{min-height:420px}
+.mw-benchmark-stage--geo .mw-map-rift__header span{font-family:Georgia,"Times New Roman",serif;font-size:12px;letter-spacing:.16em}
+.mw-benchmark-stage--geo .mw-map-rift__header b{padding:4px 7px;border:1px solid color-mix(in srgb,var(--mw-state-warning) 42%,transparent);color:var(--mw-state-warning)}
+.mw-benchmark-stage--geo .mw-causality-guardrail{border-left-width:3px;background:linear-gradient(90deg,color-mix(in srgb,var(--mw-state-warning) 16%,transparent),transparent 78%)}
 .mw-benchmark-stage--revelation .mw-revelation-lens__item{min-height:246px}
 .mw-benchmark-stage--revelation .mw-action-rail{justify-content:flex-end}
 
@@ -144,6 +291,9 @@
   background:linear-gradient(90deg,transparent,var(--mw-bronze-lo),transparent);
 }
 .mw-command-deck__core:before{top:15px}.mw-command-deck__core:after{bottom:15px}
+.mw-benchmark-command-header{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%}
+.mw-benchmark-command-header>span{font:800 8px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;color:var(--mw-accent-secondary)}
+.mw-benchmark-command-header .mw-archive-gate{flex:1;max-width:720px}
 
 /* Observatory core: more mechanical, less generic circle. */
 .mw-orbital-core{
@@ -167,7 +317,7 @@
 .mw-core-center{
   width:104px!important;height:104px!important;
   border:1px solid var(--mw-bronze-hi)!important;
-  background:linear-gradient(145deg,color-mix(in srgb,var(--mw-accent-primary) 18%,#090c0f),#050709)!important;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--mw-accent-primary) 18%,#090c0f),#040506)!important;
   box-shadow:0 0 0 8px rgba(0,0,0,.44),0 0 0 9px var(--mw-bronze-lo),0 0 48px color-mix(in srgb,var(--mw-accent-primary) 28%,transparent)!important;
 }
 .mw-orbit-node i{border-radius:2px!important;transform:rotate(45deg);width:12px!important;height:12px!important}
@@ -212,8 +362,24 @@
   position:absolute;left:18px;top:16px;
   font:700 7px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;color:color-mix(in srgb,var(--mw-text-muted) 55%,transparent);
 }
+.mw-map-rift__datum{
+  position:absolute;
+  left:8%;
+  right:8%;
+  bottom:16px;
+  z-index:3;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding-top:9px;
+  border-top:1px solid color-mix(in srgb,var(--mw-accent-secondary) 28%,transparent);
+  font:700 8px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.11em;
+  color:color-mix(in srgb,var(--mw-text-muted) 78%,transparent);
+}
 .mw-map-grid{opacity:.2!important;transform:perspective(520px) rotateX(60deg) scale(1.5)!important;transform-origin:center 70%}
 .mw-map-point:after{content:"";position:absolute;left:50%;top:50%;width:1px;height:44px;background:linear-gradient(var(--mw-tone),transparent);transform:translate(-50%,0)}
+.mw-map-rift__header span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 /* Cathedral ledger: strong vertical hierarchy and engraved datum lines. */
 .mw-observation-shard{background:linear-gradient(135deg,color-mix(in srgb,var(--mw-tone) 7%,#0a0d10),#040608)!important}
@@ -222,7 +388,7 @@
 .mw-provenance-rail,.mw-witness-thread{position:relative}
 
 /* Dense data without falling back into generic cards. */
-.mw-metric-rail{background:linear-gradient(90deg,#070a0d,#0b0e12,#050709)!important;border-top:1px solid var(--mw-bronze-lo)!important;border-bottom:1px solid var(--mw-bronze-lo)!important}
+.mw-metric-rail{background:linear-gradient(90deg,#070a0d,#0b0e12,#040506)!important;border-top:1px solid var(--mw-bronze-lo)!important;border-bottom:1px solid var(--mw-bronze-lo)!important}
 .mw-metric-rail__item{position:relative}
 .mw-metric-rail__item:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,var(--mw-tone),transparent);opacity:.32}
 .mw-metric-rail__item strong{font-family:Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:.04em}
@@ -242,11 +408,14 @@
   box-shadow:0 36px 100px rgba(0,0,0,.62),inset 0 0 0 2px #020304,inset 0 0 0 3px rgba(255,255,255,.025);
 }
 .mw-mobile-instrument:before{content:"";display:block;width:88px;height:5px;margin:3px auto 10px;border-radius:4px;background:#171d22;box-shadow:inset 0 1px rgba(255,255,255,.06)}
-.mw-mobile-instrument__screen{position:relative;display:flex;flex-direction:column;min-height:816px;overflow:hidden;border:1px solid #161d23;border-radius:20px;background:radial-gradient(circle at 50% 0,color-mix(in srgb,var(--mw-accent-primary) 11%,transparent),transparent 26%),#050709}
+.mw-mobile-instrument__screen{position:relative;display:flex;flex-direction:column;min-height:816px;overflow:hidden;border:1px solid #161d23;border-radius:20px;background:radial-gradient(circle at 50% 0,color-mix(in srgb,var(--mw-accent-primary) 11%,transparent),transparent 26%),#040506}
 .mw-mobile-instrument__screen .mw-instrument-header{padding:18px 16px 14px}
 .mw-mobile-instrument__screen .mw-metric-rail{grid-template-columns:repeat(2,1fr)!important}
 .mw-mobile-instrument__screen .mw-map-rift__surface{min-height:310px!important}
 .mw-mobile-instrument__body{display:grid;gap:12px;padding:14px 14px calc(var(--mw-mobile-dock-height) + 20px)}
+.mw-mobile-instrument__body>*{min-width:0}
+.mw-mobile-instrument__screen .mw-causality-guardrail{display:grid;align-items:start;gap:7px;padding:12px;border:1px solid color-mix(in srgb,var(--mw-state-warning) 34%,transparent);border-left:2px solid var(--mw-state-warning);background:linear-gradient(145deg,color-mix(in srgb,var(--mw-state-warning) 10%,transparent),transparent 74%)}
+.mw-mobile-instrument__screen .mw-causality-guardrail strong{font-size:10px;line-height:1.5}
 .mw-mobile-instrument__dock{position:absolute;left:0;right:0;bottom:0;z-index:3;min-height:var(--mw-mobile-dock-height);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--mw-bronze-lo);background:rgba(3,5,7,.95);backdrop-filter:blur(12px)}
 .mw-mobile-instrument__dock button{border:0;background:transparent;color:var(--mw-text-muted);padding:13px 4px;font:700 8px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
 .mw-mobile-instrument__dock button.is-active{color:var(--mw-accent-primary);box-shadow:inset 0 2px var(--mw-accent-primary)}
@@ -270,8 +439,12 @@
 
 @media(max-width:560px){
   .mw-benchmark-stage{padding:16px}
+  .mw-benchmark-stage:after{inset:8px}
+  .mw-benchmark-stage__calibration{align-items:flex-start;flex-direction:column;gap:5px;margin-bottom:8px}
   .mw-benchmark-stage .mw-instrument-header__aside{min-width:0;width:100%;justify-content:flex-start}
   .mw-benchmark-stage .mw-command-deck{display:block}
   .mw-benchmark-stage .mw-command-deck>*+*{margin-top:14px}
+  .mw-benchmark-command-header{align-items:flex-start;flex-direction:column;gap:10px}
+  .mw-benchmark-command-header .mw-archive-gate{width:100%;max-width:none}
   .mw-benchmark-stage--revelation .mw-action-rail{justify-content:flex-start}
 }

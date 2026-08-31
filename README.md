@@ -1,22 +1,28 @@
 # MoonWitness Design System
 
-Canonical reusable visual and interaction system for MoonWitness products under ArsyBelovedLabs.
+Public showcase, compatibility bridge, and experimental visual reference for MoonWitness products under ArsyBelovedLabs.
+
+> Canonical reusable UI ownership belongs to `ArsyBelovedLabs/moonwitness-frontend-platform` under the frozen MoonWitness Blueprint and ADR-025. This repository is not a second canonical UI owner.
 
 ## Scope
 
-This repository owns reusable design tokens, themes, primitives, experimental observatory instruments, evidence/data/map UI, motion language, Storybook documentation, and Figma-linked design references. Product repositories compose these building blocks and keep their business logic outside this repository.
+This repository provides executable Storybook showcases, experimental observatory instruments, visual-fidelity exploration, curated design references, compatibility mirrors, and Figma-linked design evidence.
+
+Reusable concepts may be proven here, but production-canonical tokens, primitives, patterns, and reusable domain UI kits must be promoted to `moonwitness-frontend-platform` through the normal issue/PR/verification workflow.
+
+Product repositories own routes, page composition, product data integration, and business/domain orchestration through their authorized contracts.
 
 ## Design direction
 
-- cinematic observatory / evidence-cathedral language
+- cinematic observatory / evidence-machine language
 - asymmetric and instrument-like composition instead of generic SaaS card grids
 - fully themeable semantic color system
-- reusable across MoonWitness Web, Command Center, Where Myth Fade to Legend, Cosmic, Crayon, and future products
+- reusable visual exploration across MoonWitness public Web, Command Center, CRAYON Lab, and future products
 - accessible states and reduced-motion support
 - information integrity before decoration
 - proximity measurements are never rendered as causal proof
 
-## v0.3 reusable surface
+## v0.3 showcase surface
 
 ### Foundation
 
@@ -82,24 +88,29 @@ This repository owns reusable design tokens, themes, primitives, experimental ob
 
 - `RevelationLens`
 
-All reusable components are application-agnostic and consume semantic tokens rather than MoonWitness API/database contracts.
+These implementations are showcase/compatibility evidence. Application-agnostic primitives that become canonical belong in `moonwitness-frontend-platform`.
+
+## Toolchain
+
+Development and CI use Node `24.20.0` with pnpm `11.24.0`. The checked-in
+`pnpm-lock.yaml` is the install source of truth; use `pnpm install --frozen-lockfile`.
 
 ## Storybook
 
 ```bash
-npm install
-npm run storybook
+pnpm install --frozen-lockfile
+pnpm storybook
 ```
 
-Production verification:
+Verification:
 
 ```bash
-npm run typecheck
-npm run build
-npm run build-storybook
+pnpm typecheck
+pnpm build
+pnpm build-storybook
 ```
 
-Storybook now contains:
+Storybook contains:
 
 - `MoonWitness/Full Showcase`
 - `MoonWitness/Benchmark Screens` — the five golden reference screens: Command Center, Evidence Cathedral, Geo Intelligence, Four Revelation Lens, and Mobile Instrument
@@ -108,9 +119,11 @@ Storybook now contains:
 - `MoonWitness/Data Visualization`
 - `MoonWitness/Evidence System`
 
-## Consumer integration
+## Compatibility bridge integration
 
-Until package publishing is enabled, consumers may install `main` directly:
+This public repository may be consumed as a compatibility/showcase bridge while canonical private package distribution is being completed. Such consumption does not transfer canonical component ownership away from `moonwitness-frontend-platform`.
+
+Example bridge dependency:
 
 ```json
 {
@@ -134,32 +147,58 @@ import '@arsybelovedlabs/moonwitness-design-system/styles.css'
 </MoonWitnessProvider>
 ```
 
-`ArsyBelovedLabs/moonwitness-wheremythfadetolegend` is the first production consumer and uses the shared provider/application shell while keeping research/data logic local.
+`ArsyBelovedLabs/moonwitness-wheremythfadetolegend` uses this bridge for visual integration while keeping routes, research/data logic, and application composition in the application repository.
 
 ## Ownership contract
 
 ```text
-moonwitness-design-system
-  owns: tokens + themes + reusable interaction primitives + visual instruments
+moonwitness-frontend-platform
+  canonical owner:
+    tokens
+    primitives
+    patterns
+    reusable domain UI kits
 
-consumer repositories
-  own: routes + business logic + data fetching + domain orchestration + application composition
+moonwitness-design-system
+  showcase / compatibility bridge:
+    Storybook references
+    visual experiments
+    compatibility mirrors
+    curated design evidence
+
+application repositories
+  own:
+    routes
+    page composition
+    product data integration
+    application-specific presentation
 ```
 
-Do not fork shared primitives in consumer repositories. If a component can be reused by more than one MoonWitness product, its canonical implementation belongs here.
+Do not fork canonical platform primitives in consumer applications. If a showcase primitive proves reusable across MoonWitness products, promote it to `moonwitness-frontend-platform` instead of creating a second canonical implementation here.
+
+## Curated showcase references
+
+Curated generated references live under `docs/showcase/`. They are visual-review assets only. They do not create product scope, prove implementation, or supersede Figma/Storybook/canonical frontend-platform contracts.
 
 ## Figma
 
-Design source: **MoonWitness Design System — Experimental Observatory UI**
+Design reference: **MoonWitness Design System — Experimental Observatory UI**
 
 https://www.figma.com/design/LP5AwOwe6QGeXRNpeZWsjd
 
-The Starter Figma plan currently limits MCP calls, so production code + Storybook are the executable source while Figma high-fidelity refinement catches up when the limit becomes available again.
+Figma and Storybook are visual/specification tools. Canonical reusable production implementation remains governed by `moonwitness-frontend-platform`.
 
 ## Repository policy
 
-This repository uses `main` as the single working branch by project decision.
+Active development uses:
+
+```text
+dev   → integration / active work
+main  → stable promoted state
+```
+
+Changes are verified on `dev` and promoted to `main` through review/CI. Historical branches are not active working targets.
 
 ## Status
 
-**v0.3.0** — semantic theme engine, cinematic application shell, page-level instrument primitives, interaction states, signature data visualizations, evidence/provenance primitives, multi-page Storybook showcase, CI verification, and the first production consumer integration are implemented.
+**v0.3.x showcase bridge** — cinematic shell experiments, page-level instruments, interaction states, signature data visualizations, evidence/provenance references, multi-page Storybook showcase, and curated visual references are available. Canonical reusable UI ownership remains in `moonwitness-frontend-platform`.
