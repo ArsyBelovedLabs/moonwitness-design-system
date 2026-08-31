@@ -1,0 +1,298 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter">
+  <defs>
+    <symbol id="mw-icon-observation" viewBox="0 0 24 24">
+      <g id="mw-observation-aperture" data-part="aperture">
+        <circle cx="12" cy="12" r="6" />
+        <path d="M4 12h2M18 12h2M12 4v2M12 18v2" />
+      </g>
+      <g id="mw-observation-core" data-part="core">
+        <circle cx="12" cy="12" r="1.5" />
+      </g>
+      <g id="mw-observation-tick" data-part="tick">
+        <path d="M7.8 7.8l1.1 1.1M15.1 15.1l1.1 1.1" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-evidence" viewBox="0 0 24 24">
+      <g id="mw-evidence-aperture" data-part="aperture">
+        <path d="M5 6.5h9l5 5v6H5z" />
+        <path d="M14 6.5v5h5" />
+      </g>
+      <g id="mw-evidence-trace" data-part="trace">
+        <path d="M8 14h6M8 17h4" />
+      </g>
+      <g id="mw-evidence-node" data-part="node">
+        <circle cx="8" cy="10" r="1" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-source" viewBox="0 0 24 24">
+      <g id="mw-source-aperture" data-part="aperture">
+        <path d="M6 4h9l3 3v13H6z" />
+        <path d="M15 4v4h3" />
+      </g>
+      <g id="mw-source-trace" data-part="trace">
+        <path d="M9 11h6M9 14h6M9 17h4" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-provenance" viewBox="0 0 24 24">
+      <g id="mw-provenance-node" data-part="node">
+        <circle cx="6" cy="6" r="1.5" />
+        <circle cx="18" cy="8" r="1.5" />
+        <circle cx="12" cy="18" r="1.5" />
+      </g>
+      <g id="mw-provenance-trace" data-part="trace">
+        <path d="M7.4 6.4l9.2 1.2M17.3 9.3l-4.1 7.3M10.8 16.8L7 7.4" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-witness" viewBox="0 0 24 24">
+      <g id="mw-witness-aperture" data-part="aperture">
+        <path d="M3.5 12s3.2-5 8.5-5 8.5 5 8.5 5-3.2 5-8.5 5-8.5-5-8.5-5z" />
+      </g>
+      <g id="mw-witness-core" data-part="core">
+        <circle cx="12" cy="12" r="2" />
+      </g>
+      <g id="mw-witness-tick" data-part="tick">
+        <path d="M12 4.5v1.5M12 18v1.5" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-search" viewBox="0 0 24 24">
+      <g id="mw-search-aperture" data-part="aperture">
+        <circle cx="10.5" cy="10.5" r="5.5" />
+      </g>
+      <g id="mw-search-trace" data-part="trace">
+        <path d="M14.5 14.5L20 20" />
+      </g>
+      <g id="mw-search-tick" data-part="tick">
+        <path d="M10.5 7.5v1.5M7.5 10.5H9" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-inspect" viewBox="0 0 24 24">
+      <g id="mw-inspect-aperture" data-part="aperture">
+        <path d="M5 9V5h4M15 5h4v4M19 15v4h-4M9 19H5v-4" />
+      </g>
+      <g id="mw-inspect-core" data-part="core">
+        <circle cx="12" cy="12" r="2.5" />
+      </g>
+      <g id="mw-inspect-tick" data-part="tick">
+        <path d="M12 7v2M12 15v2M7 12h2M15 12h2" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-compare" viewBox="0 0 24 24">
+      <g id="mw-compare-node" data-part="node">
+        <circle cx="7" cy="12" r="3" />
+        <circle cx="17" cy="12" r="3" />
+      </g>
+      <g id="mw-compare-trace" data-part="trace">
+        <path d="M10 10h4M10 14h4" />
+      </g>
+      <g id="mw-compare-tick" data-part="tick">
+        <path d="M7 7V5M17 19v-2" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-run" viewBox="0 0 24 24">
+      <g id="mw-run-aperture" data-part="aperture">
+        <circle cx="12" cy="12" r="8" />
+      </g>
+      <g id="mw-run-needle" data-part="needle">
+        <path d="M10 8.5l5.5 3.5-5.5 3.5z" />
+      </g>
+      <g id="mw-run-tick" data-part="tick">
+        <path d="M12 2.5v2M12 19.5v2" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-pause" viewBox="0 0 24 24">
+      <g id="mw-pause-aperture" data-part="aperture">
+        <circle cx="12" cy="12" r="8" />
+      </g>
+      <g id="mw-pause-needle" data-part="needle">
+        <path d="M9.5 8v8M14.5 8v8" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-stop" viewBox="0 0 24 24">
+      <g id="mw-stop-aperture" data-part="aperture">
+        <circle cx="12" cy="12" r="8" />
+      </g>
+      <g id="mw-stop-core" data-part="core">
+        <rect x="9" y="9" width="6" height="6" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-orbit" viewBox="0 0 24 24">
+      <g id="mw-orbit-core" data-part="core">
+        <circle cx="12" cy="12" r="2" />
+      </g>
+      <g id="mw-orbit-ring" data-part="ring">
+        <ellipse cx="12" cy="12" rx="8" ry="3.5" />
+        <ellipse cx="12" cy="12" rx="3.5" ry="8" />
+      </g>
+      <g id="mw-orbit-node" data-part="node">
+        <circle cx="19.3" cy="13.3" r="1" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-moon" viewBox="0 0 24 24">
+      <g id="mw-moon-ring" data-part="ring">
+        <path d="M16.5 4.8a8 8 0 1 0 2.7 11.7A6.8 6.8 0 0 1 16.5 4.8z" />
+      </g>
+      <g id="mw-moon-tick" data-part="tick">
+        <path d="M5.5 8.5h2M6.5 7.5v2" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-sun" viewBox="0 0 24 24">
+      <g id="mw-sun-core" data-part="core">
+        <circle cx="12" cy="12" r="3.5" />
+      </g>
+      <g id="mw-sun-tick" data-part="tick">
+        <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6L7 7M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-eclipse" viewBox="0 0 24 24">
+      <g id="mw-eclipse-ring" data-part="ring">
+        <circle cx="10" cy="12" r="6" />
+        <circle cx="14" cy="12" r="6" />
+      </g>
+      <g id="mw-eclipse-trace" data-part="trace">
+        <path d="M12 5.8v12.4" />
+      </g>
+      <g id="mw-eclipse-tick" data-part="tick">
+        <path d="M12 3v1.5M12 19.5V21" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-azimuth" viewBox="0 0 24 24">
+      <g id="mw-azimuth-ring" data-part="ring">
+        <circle cx="12" cy="12" r="7.5" />
+      </g>
+      <g id="mw-azimuth-needle" data-part="needle">
+        <path d="M12 12l4-5M12 12l-2 5" />
+      </g>
+      <g id="mw-azimuth-tick" data-part="tick">
+        <path d="M12 2.5v2M21.5 12h-2M12 21.5v-2M2.5 12h2" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-altitude" viewBox="0 0 24 24">
+      <g id="mw-altitude-trace" data-part="trace">
+        <path d="M4 18h16M6 18a10 10 0 0 1 10-10" />
+      </g>
+      <g id="mw-altitude-needle" data-part="needle">
+        <path d="M6 18l10-10" />
+      </g>
+      <g id="mw-altitude-tick" data-part="tick">
+        <path d="M10 16v2M14 13.5l1.3 1.3M16.5 10h2" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-chronology" viewBox="0 0 24 24">
+      <g id="mw-chronology-trace" data-part="trace">
+        <path d="M5 6v12h14" />
+      </g>
+      <g id="mw-chronology-node" data-part="node">
+        <circle cx="8" cy="15" r="1.2" />
+        <circle cx="12" cy="11" r="1.2" />
+        <circle cx="17" cy="8" r="1.2" />
+      </g>
+      <g id="mw-chronology-tick" data-part="tick">
+        <path d="M8 17v2M12 17v2M17 17v2" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-coordinate" viewBox="0 0 24 24">
+      <g id="mw-coordinate-aperture" data-part="aperture">
+        <circle cx="12" cy="12" r="6" />
+      </g>
+      <g id="mw-coordinate-trace" data-part="trace">
+        <path d="M12 3v6M12 15v6M3 12h6M15 12h6" />
+      </g>
+      <g id="mw-coordinate-core" data-part="core">
+        <circle cx="12" cy="12" r="1" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-epicenter" viewBox="0 0 24 24">
+      <g id="mw-epicenter-core" data-part="core">
+        <circle cx="12" cy="12" r="1.5" />
+      </g>
+      <g id="mw-epicenter-ring" data-part="ring">
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="12" cy="12" r="7.5" />
+      </g>
+      <g id="mw-epicenter-trace" data-part="trace">
+        <path d="M3 12h2M19 12h2" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-trace" viewBox="0 0 24 24">
+      <g id="mw-trace-node" data-part="node">
+        <circle cx="5" cy="17" r="1.2" />
+        <circle cx="12" cy="10" r="1.2" />
+        <circle cx="19" cy="7" r="1.2" />
+      </g>
+      <g id="mw-trace-trace" data-part="trace">
+        <path d="M6 16.2l5-5.3M13.2 9.5l4.6-2" />
+      </g>
+      <g id="mw-trace-tick" data-part="tick">
+        <path d="M8.2 13.2l1.2 1.2M15.2 8.6l.8 1.4" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-radius" viewBox="0 0 24 24">
+      <g id="mw-radius-ring" data-part="ring">
+        <circle cx="12" cy="12" r="7.5" />
+      </g>
+      <g id="mw-radius-needle" data-part="needle">
+        <path d="M12 12l6-4" />
+      </g>
+      <g id="mw-radius-core" data-part="core">
+        <circle cx="12" cy="12" r="1" />
+      </g>
+      <g id="mw-radius-tick" data-part="tick">
+        <path d="M18 8l1.2-.8" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-correlation" viewBox="0 0 24 24">
+      <g id="mw-correlation-node" data-part="node">
+        <circle cx="7" cy="8" r="2" />
+        <circle cx="17" cy="16" r="2" />
+      </g>
+      <g id="mw-correlation-trace" data-part="trace">
+        <path d="M8.6 9.2l6.8 5.6" />
+      </g>
+      <g id="mw-correlation-tick" data-part="tick">
+        <path d="M5 14h4M15 10h4" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-verified" viewBox="0 0 24 24">
+      <g id="mw-verified-seal" data-part="seal">
+        <path d="M12 3.5l6.5 2.5v5.5c0 4.3-2.7 7.4-6.5 9-3.8-1.6-6.5-4.7-6.5-9V6z" />
+      </g>
+      <g id="mw-verified-trace" data-part="trace">
+        <path d="M8.5 12l2.3 2.3 4.8-5" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-partial" viewBox="0 0 24 24">
+      <g id="mw-partial-ring" data-part="ring">
+        <path d="M12 4a8 8 0 0 1 8 8M12 20a8 8 0 0 1-8-8" />
+      </g>
+      <g id="mw-partial-trace" data-part="trace">
+        <path d="M7 12h10" />
+      </g>
+      <g id="mw-partial-node" data-part="node">
+        <circle cx="12" cy="12" r="1" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-unsupported" viewBox="0 0 24 24">
+      <g id="mw-unsupported-trace" data-part="trace">
+        <path d="M4 12h9" />
+        <path d="M13 8v8" />
+      </g>
+      <g id="mw-unsupported-node" data-part="node">
+        <circle cx="5" cy="12" r="1.2" />
+      </g>
+      <g id="mw-unsupported-tick" data-part="tick">
+        <path d="M16 9l4 6M20 9l-4 6" />
+      </g>
+    </symbol>
+    <symbol id="mw-icon-unresolved" viewBox="0 0 24 24">
+      <g id="mw-unresolved-aperture" data-part="aperture">
+        <path d="M7 7a6 6 0 1 1 0 10" />
+      </g>
+      <g id="mw-unresolved-trace" data-part="trace">
+        <path d="M10 10.2a2.3 2.3 0 1 1 3.4 2c-.9.5-1.4 1.1-1.4 2.1" />
+      </g>
+      <g id="mw-unresolved-node" data-part="node">
+        <circle cx="12" cy="17.2" r="0.8" />
+      </g>
+    </symbol>
+  </defs>
+</svg>

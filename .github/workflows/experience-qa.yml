@@ -8,6 +8,7 @@ on:
       - ".github/workflows/experience-qa.yml"
       - ".storybook/**"
       - "src/**"
+      - "openpencil/icons/**"
       - "package.json"
       - "pnpm-lock.yaml"
   pull_request:
@@ -16,6 +17,7 @@ on:
       - ".github/workflows/experience-qa.yml"
       - ".storybook/**"
       - "src/**"
+      - "openpencil/icons/**"
       - "package.json"
       - "pnpm-lock.yaml"
 
@@ -69,10 +71,14 @@ jobs:
 
           const base = 'http://127.0.0.1:6006';
           const index = await (await fetch(`${base}/index.json`)).json();
-          const entries = Object.values(index.entries ?? {}).filter((entry) => {
+          const allEntries = Object.values(index.entries ?? {});
+          const iconEntry = allEntries.find((entry) => String(entry.title ?? '') === 'MoonWitness/00 Icon System');
+          if (!iconEntry) throw new Error('MoonWitness/00 Icon System story is required');
+          const numbered = allEntries.filter((entry) => {
             const title = String(entry.title ?? '');
             return title.startsWith('MoonWitness/00 ') || title.startsWith('MoonWitness/01 ') || title.startsWith('MoonWitness/02 ');
-          }).slice(0, 12);
+          });
+          const entries = [iconEntry, ...numbered.filter((entry) => entry.id !== iconEntry.id)].slice(0, 12);
 
           if (entries.length === 0) throw new Error('No numbered MoonWitness workbench/master stories found');
 
@@ -103,7 +109,7 @@ jobs:
 
           await context.close();
           await browser.close();
-          console.log(`Checked ${entries.length} MoonWitness stories`);
+          console.log(`Checked ${entries.length} MoonWitness stories, including canonical icon mirror`);
           if (failures.length) {
             console.error(JSON.stringify(failures, null, 2));
             process.exit(1);
