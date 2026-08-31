@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { MoonWitnessProvider } from './MoonWitnessProvider'
+import { MoonWitnessProvider, type MoonWitnessTheme } from './MoonWitnessProvider'
 import { CausalityGuardrail, CommandDeck, EvidenceSpine, MissionRail, ObservationShard, OrbitalCore, ReliabilityPrism, SignalBeacon, TemporalOrrery } from './Observatory'
 
 const meta = {
@@ -25,8 +25,8 @@ const nodes = [
   { id: 'time', label: 'TIME', value: 'ΔT' },
 ]
 
-function Showcase() {
-  return <MoonWitnessProvider theme="myth-fade" style={{ minHeight: '100vh', padding: 30 }}>
+function Showcase({ theme }: { theme: MoonWitnessTheme }) {
+  return <MoonWitnessProvider theme={theme} style={{ minHeight: '100vh', padding: 30 }}>
     <CommandDeck
       header={<><div><div style={{ fontSize: 11, letterSpacing: '.16em', color: 'var(--mw-accent-secondary)' }}>MOONWITNESS DESIGN SYSTEM</div><h1 style={{ margin: '6px 0 0', fontSize: 26 }}>Cinematic Observatory Interface</h1></div><SignalBeacon tone="success" label="SYSTEM / ONLINE" /></>}
       rail={<MissionRail items={missions} activeId="evidence" />}
@@ -37,5 +37,6 @@ function Showcase() {
   </MoonWitnessProvider>
 }
 
-export const MythFade: Story = { render: () => <Showcase /> }
-export const Cyan: Story = { render: () => <MoonWitnessProvider theme="cyan" style={{ minHeight:'100vh', padding:30 }}><Showcase /></MoonWitnessProvider> }
+export const MythFade: Story = { render: () => <Showcase theme="myth-fade" /> }
+export const Cyan: Story = { render: () => <Showcase theme="cyan" /> }
+export const Amber: Story = { render: () => <Showcase theme="amber" /> }
