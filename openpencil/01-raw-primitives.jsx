@@ -39,7 +39,7 @@
 
     <Frame p={20} bg="#090C0F" stroke="#2A3036" strokeWidth={1} flex="col" gap={12}>
       <Text size={11} weight="600" color="#8E949B">CALIBRATION / RETICLE / SCALE</Text>
-      <Frame w="fill" h="fill" flex="row" justify="around" items="center">
+      <Frame w="fill" h="fill" flex="row" justify="between" items="center">
         <Ellipse w={116} h={116} stroke="#2A3036" strokeWidth={1}/>
         <Frame w={116} h={116} bg="#040506" stroke="#D7281E" strokeWidth={1} flex="col" justify="center" items="center">
           <Line w={90} stroke="#2A3036" strokeWidth={1}/>
