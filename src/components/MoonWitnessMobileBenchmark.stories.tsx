@@ -34,7 +34,7 @@ export const MobileInstrumentGolden: Story = {
             status={<SignalBeacon tone="success" label="LIVE" />}
           />
           <MetricRail items={metrics} />
-          <div style={{ padding: 14, display: 'grid', gap: 12 }}>
+          <div className="mw-mobile-instrument__body">
             <TruthAperture label="TRUTH INTEGRITY" score={87} detail="repository-grounded" tone="active" />
             <MapRift
               title="FIELD / GEO CONTEXT"
@@ -53,12 +53,12 @@ export const MobileInstrumentGolden: Story = {
               <strong>Temporal/geographic proximity does not establish causation.</strong>
             </div>
           </div>
-          <div className="mw-mobile-instrument__dock">
+          <nav className="mw-mobile-instrument__dock" aria-label="Mobile instrument navigation">
             <button className="is-active" type="button">Observe</button>
             <button type="button">Evidence</button>
             <button type="button">Map</button>
             <button type="button">Archive</button>
-          </div>
+          </nav>
         </div>
       </div>
     </MoonWitnessProvider>
