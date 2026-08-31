@@ -14,7 +14,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const page = (children: React.ReactNode, theme: 'myth-fade'|'cyan'|'amber'|'emerald' = 'myth-fade') => (
+type BenchmarkScreen = 'command' | 'evidence' | 'geo' | 'revelation'
+
+const page = (screen: BenchmarkScreen, children: React.ReactNode, theme: 'myth-fade'|'cyan'|'amber'|'emerald' = 'myth-fade') => (
   <MoonWitnessProvider theme={theme}>
     <ApplicationShell
       label="MOONWITNESS"
@@ -23,7 +25,7 @@ const page = (children: React.ReactNode, theme: 'myth-fade'|'cyan'|'amber'|'emer
       statusTone="success"
       topRail={<span style={{fontFamily:'ui-monospace,monospace',fontSize:9,letterSpacing:'.14em',color:'var(--mw-text-muted)'}}>OBSERVE · VERIFY · CLARIFY · ARCHIVE</span>}
     >
-      <div className="mw-page-stage">{children}</div>
+      <div className={`mw-page-stage mw-benchmark-stage mw-benchmark-stage--${screen}`}>{children}</div>
     </ApplicationShell>
   </MoonWitnessProvider>
 )
@@ -35,7 +37,7 @@ const metrics = [
   { label:'CAUSAL PROOF', value:'0–15', detail:'/100', tone:'neutral' as const },
 ]
 
-export const CommandCenterBenchmark: Story = { render: () => page(<>
+export const CommandCenterBenchmark: Story = { render: () => page('command', <>
   <InstrumentHeader code="BENCHMARK / 01" title="Command Center" subtitle="One operational instrument: signal intake, evidence routing, chronology, map context and explicit causal guardrails." status={<SignalBeacon tone="success" label="SYSTEM / ONLINE"/>}/>
   <div className="mw-page-stage__body">
     <CommandDeck
@@ -51,7 +53,7 @@ export const CommandCenterBenchmark: Story = { render: () => page(<>
   </div>
 </>) }
 
-export const EvidenceCathedralBenchmark: Story = { render: () => page(<>
+export const EvidenceCathedralBenchmark: Story = { render: () => page('evidence', <>
   <InstrumentHeader code="BENCHMARK / 02" title="Evidence Cathedral" subtitle="Source identity, claim scope, provenance and confidence stay independently inspectable." actions={<ArchiveGate label="EVIDENCE GATE" placeholder="Search source, publisher, record…"/>}/>
   <div className="mw-page-stage__body">
     <MetricRail items={metrics}/>
@@ -67,7 +69,7 @@ export const EvidenceCathedralBenchmark: Story = { render: () => page(<>
   </div>
 </>) }
 
-export const GeoIntelligenceBenchmark: Story = { render: () => page(<>
+export const GeoIntelligenceBenchmark: Story = { render: () => page('geo', <>
   <InstrumentHeader code="BENCHMARK / 03" title="Geo Intelligence" subtitle="Disaster context and observation overlays share a map surface while causal interpretation remains a separate review field." status={<SignalBeacon tone="warning" label="NO CAUSAL ASSUMPTION"/>}/>
   <div className="mw-page-stage__body">
     <CausalityGuardrail/>
@@ -80,7 +82,7 @@ export const GeoIntelligenceBenchmark: Story = { render: () => page(<>
   </div>
 </>, 'amber') }
 
-export const RevelationArchiveBenchmark: Story = { render: () => page(<>
+export const RevelationArchiveBenchmark: Story = { render: () => page('revelation', <>
   <InstrumentHeader code="BENCHMARK / 04" title="Four Revelation Lens" subtitle="Four textual portals remain visually and analytically distinct while sharing the same evidence-first interface language." status={<SignalBeacon tone="success" label="LENSES / SEPARATE"/>}/>
   <div className="mw-page-stage__body">
     <RevelationLens items={[{key:'Q',name:"Al-Qur'an",reference:'Qur’anic lens',focus:'Explicit reference and bounded comparison.',tone:'success'},{key:'I',name:'Injil / Gospel',reference:'Gospel lens',focus:'Complementary textual comparison.',tone:'active'},{key:'T',name:'Taurat / Torah',reference:'Torah lens',focus:'Complementary textual comparison.',tone:'warning'},{key:'Z',name:'Zabur / Psalms',reference:'Psalms lens',focus:'Complementary textual comparison.',tone:'neutral'}]}/>

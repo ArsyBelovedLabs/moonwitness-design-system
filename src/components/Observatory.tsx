@@ -10,7 +10,7 @@ export type MissionItem = { id: string; label: string; meta?: string }
 export function MissionRail({ items, activeId, onSelect }: { items: MissionItem[]; activeId?: string; onSelect?: (id: string) => void }) {
   return <nav className="mw-mission-rail" aria-label="Mission navigation">
     <div className="mw-rail-kicker">MISSION RAIL</div>
-    {items.map((item, index) => <button key={item.id} type="button" className={item.id === activeId ? 'is-active' : ''} onClick={() => onSelect?.(item.id)}>
+    {items.map((item, index) => <button key={item.id} type="button" className={item.id === activeId ? 'is-active' : ''} aria-current={item.id === activeId ? 'page' : undefined} onClick={() => onSelect?.(item.id)}>
       <span className="mw-rail-index">{String(index + 1).padStart(2, '0')}</span>
       <span className="mw-rail-label">{item.label}</span>
       {item.meta ? <small>{item.meta}</small> : null}

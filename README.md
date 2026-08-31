@@ -102,6 +102,7 @@ npm run build-storybook
 Storybook now contains:
 
 - `MoonWitness/Full Showcase`
+- `MoonWitness/Benchmark Screens` — the five golden reference screens: Command Center, Evidence Cathedral, Geo Intelligence, Four Revelation Lens, and Mobile Instrument
 - `MoonWitness/Pages` — Command Center, Observatory, Evidence Ledger, Disaster Map, Correlation Engine, Practice-Level Review, Four Revelation Lens, Candidate Pipeline, Mobile Instrument Mode, Theme Lab
 - `MoonWitness/Component Lab`
 - `MoonWitness/Data Visualization`

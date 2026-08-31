@@ -14,6 +14,32 @@
     linear-gradient(180deg,#030507 0%,#070a0d 45%,#020304 100%);
 }
 
+/* Golden benchmark frames keep the reference screens calibrated at wide
+   canvas sizes while preserving the same full-bleed atmosphere. */
+.mw-benchmark-stage{
+  padding:clamp(22px,2.6vw,40px);
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.012),transparent 12%,transparent 88%,rgba(255,255,255,.012)),
+    linear-gradient(180deg,rgba(255,255,255,.012),transparent 24%);
+}
+.mw-benchmark-stage>.mw-instrument-header,
+.mw-benchmark-stage>.mw-page-stage__body{
+  width:min(100%,1560px);
+  margin-left:auto;
+  margin-right:auto;
+}
+.mw-benchmark-stage>.mw-page-stage__body{margin-top:clamp(22px,2.2vw,34px)}
+.mw-benchmark-stage .mw-instrument-grid>*{min-width:0}
+.mw-benchmark-stage .mw-instrument-header__aside{min-width:180px}
+.mw-benchmark-stage .mw-command-deck{grid-template-columns:minmax(190px,.68fr) minmax(480px,2.08fr) minmax(250px,.82fr)}
+.mw-benchmark-stage--command .mw-command-deck__core{min-width:0}
+.mw-benchmark-stage--evidence .mw-witness-thread{min-height:108px}
+.mw-benchmark-stage--evidence .mw-observation-shard{min-height:180px}
+.mw-benchmark-stage--geo .mw-map-rift{min-height:100%}
+.mw-benchmark-stage--geo .mw-causality-lattice{min-height:420px}
+.mw-benchmark-stage--revelation .mw-revelation-lens__item{min-height:246px}
+.mw-benchmark-stage--revelation .mw-action-rail{justify-content:flex-end}
+
 /* Three depth planes: haze, engraved grid and optical vignette. */
 .mw-atmosphere:before{
   content:"";
@@ -209,17 +235,19 @@
 
 /* Mobile Instrument Mode is deliberately recomposed, never desktop shrunk down. */
 .mw-mobile-instrument{
+  --mw-mobile-dock-height:56px;
   width:min(430px,100%);margin:0 auto;min-height:860px;position:relative;overflow:hidden;
   border:1px solid var(--mw-bronze-lo);border-radius:28px;padding:10px;
   background:linear-gradient(180deg,#0a0d10,#020304);
   box-shadow:0 36px 100px rgba(0,0,0,.62),inset 0 0 0 2px #020304,inset 0 0 0 3px rgba(255,255,255,.025);
 }
 .mw-mobile-instrument:before{content:"";display:block;width:88px;height:5px;margin:3px auto 10px;border-radius:4px;background:#171d22;box-shadow:inset 0 1px rgba(255,255,255,.06)}
-.mw-mobile-instrument__screen{position:relative;min-height:816px;overflow:hidden;border:1px solid #161d23;border-radius:20px;background:radial-gradient(circle at 50% 0,color-mix(in srgb,var(--mw-accent-primary) 11%,transparent),transparent 26%),#050709}
+.mw-mobile-instrument__screen{position:relative;display:flex;flex-direction:column;min-height:816px;overflow:hidden;border:1px solid #161d23;border-radius:20px;background:radial-gradient(circle at 50% 0,color-mix(in srgb,var(--mw-accent-primary) 11%,transparent),transparent 26%),#050709}
 .mw-mobile-instrument__screen .mw-instrument-header{padding:18px 16px 14px}
 .mw-mobile-instrument__screen .mw-metric-rail{grid-template-columns:repeat(2,1fr)!important}
 .mw-mobile-instrument__screen .mw-map-rift__surface{min-height:310px!important}
-.mw-mobile-instrument__dock{position:sticky;bottom:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--mw-bronze-lo);background:rgba(3,5,7,.95);backdrop-filter:blur(12px)}
+.mw-mobile-instrument__body{display:grid;gap:12px;padding:14px 14px calc(var(--mw-mobile-dock-height) + 20px)}
+.mw-mobile-instrument__dock{position:absolute;left:0;right:0;bottom:0;z-index:3;min-height:var(--mw-mobile-dock-height);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--mw-bronze-lo);background:rgba(3,5,7,.95);backdrop-filter:blur(12px)}
 .mw-mobile-instrument__dock button{border:0;background:transparent;color:var(--mw-text-muted);padding:13px 4px;font:700 8px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
 .mw-mobile-instrument__dock button.is-active{color:var(--mw-accent-primary);box-shadow:inset 0 2px var(--mw-accent-primary)}
 
@@ -231,9 +259,19 @@
 
 @media(max-width:900px){
   .mw-application-shell__toprail:after{display:none}
+  .mw-benchmark-stage{padding:22px}
+  .mw-benchmark-stage .mw-command-deck{grid-template-columns:1fr 1fr}
   .mw-orbital-core{min-height:390px!important}
   .mw-orbit--outer{width:290px!important;height:290px!important}
   .mw-orbit--middle{width:220px!important;height:220px!important}
   .mw-orbit--inner{width:140px!important;height:140px!important}
   .mw-map-rift__surface{min-height:340px!important}
+}
+
+@media(max-width:560px){
+  .mw-benchmark-stage{padding:16px}
+  .mw-benchmark-stage .mw-instrument-header__aside{min-width:0;width:100%;justify-content:flex-start}
+  .mw-benchmark-stage .mw-command-deck{display:block}
+  .mw-benchmark-stage .mw-command-deck>*+*{margin-top:14px}
+  .mw-benchmark-stage--revelation .mw-action-rail{justify-content:flex-start}
 }
