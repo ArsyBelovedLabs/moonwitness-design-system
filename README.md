@@ -14,39 +14,75 @@ This repository owns reusable design tokens, themes, primitives, experimental ob
 - reusable across MoonWitness Web, Command Center, Where Myth Fade to Legend, Cosmic, Crayon, and future products
 - accessible states and reduced-motion support
 - information integrity before decoration
+- proximity measurements are never rendered as causal proof
 
-## Canonical interaction primitives
+## v0.3 reusable surface
 
-The first reusable signature set is now implemented:
+### Foundation
 
 - `MoonWitnessProvider`
+- `ApplicationShell`
 - `InstrumentPanel`
-- `SignalBeacon`
+- semantic `--mw-*` tokens
+- `myth-fade`, `crimson`, `cyan`, `amber`, `emerald`, `violet`, `neutral` themes
+
+### Navigation / command
+
 - `MissionRail`
+- `ArchiveGate`
+- `ActionRail`
+- `SegmentedRail`
+- `CommandDeck`
+- `InstrumentHeader`
+
+### Observatory / temporal
+
 - `OrbitalCore`
-- `EvidenceSpine`
 - `TemporalOrrery`
-- `CausalityGuardrail`
+- `ChronologyTrack`
+- `SignalBeacon`
+- `MetricRail`
+- `InspectorDock`
+
+### Evidence / provenance
+
+- `EvidenceSpine`
+- `WitnessThread`
+- `ProvenanceRail`
+- `SourceSeal`
+- `EvidenceRules`
 - `ObservationShard`
 - `ReliabilityPrism`
+
+### Geo / causality
+
 - `MapRift`
-- `CommandDeck`
+- `CausalityGuardrail`
+- `CausalityLattice`
 
-These components are application-agnostic and consume semantic `--mw-*` tokens rather than project-specific data contracts.
+### Signature data instruments
 
-## Theme engine
+- `TruthAperture`
+- `CausalityLattice`
+- `SignalWave`
+- `StateVector`
+- `EventPulse`
 
-Built-in semantic themes currently include:
+### States / interaction
 
-- `myth-fade`
-- `crimson`
-- `cyan`
-- `amber`
-- `emerald`
-- `violet`
-- `neutral`
+- `InstrumentButton`
+- `StatusMatrix`
+- `FilterDock`
+- `ProgressRail`
+- `LoadingOrbit`
+- `EmptySignal`
+- `InspectorRows`
 
-Themes alter semantic accent/material values while component interaction contracts remain stable.
+### Revelation
+
+- `RevelationLens`
+
+All reusable components are application-agnostic and consume semantic tokens rather than MoonWitness API/database contracts.
 
 ## Storybook
 
@@ -63,11 +99,17 @@ npm run build
 npm run build-storybook
 ```
 
-The full cinematic Command Center specimen is available under `MoonWitness/Full Showcase`.
+Storybook now contains:
+
+- `MoonWitness/Full Showcase`
+- `MoonWitness/Pages` — Command Center, Observatory, Evidence Ledger, Disaster Map, Correlation Engine, Practice-Level Review, Four Revelation Lens, Candidate Pipeline, Mobile Instrument Mode, Theme Lab
+- `MoonWitness/Component Lab`
+- `MoonWitness/Data Visualization`
+- `MoonWitness/Evidence System`
 
 ## Consumer integration
 
-A consumer may install the repository directly while package publishing is not yet enabled:
+Until package publishing is enabled, consumers may install `main` directly:
 
 ```json
 {
@@ -78,15 +120,32 @@ A consumer may install the repository directly while package publishing is not y
 ```
 
 ```tsx
-import { MoonWitnessProvider } from '@arsybelovedlabs/moonwitness-design-system'
+import {
+  ApplicationShell,
+  MoonWitnessProvider,
+} from '@arsybelovedlabs/moonwitness-design-system'
 import '@arsybelovedlabs/moonwitness-design-system/styles.css'
 
 <MoonWitnessProvider theme="myth-fade">
-  <App />
+  <ApplicationShell label="WHERE MYTH FADE TO LEGEND">
+    <App />
+  </ApplicationShell>
 </MoonWitnessProvider>
 ```
 
-`ArsyBelovedLabs/moonwitness-wheremythfadetolegend` is the first live consumer of this contract.
+`ArsyBelovedLabs/moonwitness-wheremythfadetolegend` is the first production consumer and uses the shared provider/application shell while keeping research/data logic local.
+
+## Ownership contract
+
+```text
+moonwitness-design-system
+  owns: tokens + themes + reusable interaction primitives + visual instruments
+
+consumer repositories
+  own: routes + business logic + data fetching + domain orchestration + application composition
+```
+
+Do not fork shared primitives in consumer repositories. If a component can be reused by more than one MoonWitness product, its canonical implementation belongs here.
 
 ## Figma
 
@@ -94,12 +153,12 @@ Design source: **MoonWitness Design System — Experimental Observatory UI**
 
 https://www.figma.com/design/LP5AwOwe6QGeXRNpeZWsjd
 
-The Starter Figma plan limits MCP design edits. The file is organized into three master pages with Sections so the complete system can remain in one design file without exceeding the page limit.
+The Starter Figma plan currently limits MCP calls, so production code + Storybook are the executable source while Figma high-fidelity refinement catches up when the limit becomes available again.
 
 ## Repository policy
 
-This repository uses `main` as the single working branch by project decision. Do not duplicate primitives inside application repositories. Applications may add integration CSS or compositions, but canonical reusable components and tokens belong here.
+This repository uses `main` as the single working branch by project decision.
 
 ## Status
 
-Core semantic tokens, Storybook, reusable observatory primitives, cinematic showcase composition, CI verification, and first consumer integration are implemented. High-fidelity Figma refinement continues against the generated showcase boards as the visual benchmark.
+**v0.3.0** — semantic theme engine, cinematic application shell, page-level instrument primitives, interaction states, signature data visualizations, evidence/provenance primitives, multi-page Storybook showcase, CI verification, and the first production consumer integration are implemented.
