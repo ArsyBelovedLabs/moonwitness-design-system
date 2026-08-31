@@ -1,18 +1,19 @@
 :root {
-  --mw-surface-void: #07090c;
-  --mw-surface-panel: #0d1117;
-  --mw-surface-raised: #121820;
-  --mw-text-primary: #f2eee6;
-  --mw-text-muted: #8a949e;
-  --mw-accent-primary: #c83a2a;
-  --mw-accent-secondary: #c99137;
-  --mw-state-success: #3f9d70;
+  --mw-surface-void: #050709;
+  --mw-surface-panel: #0a0f14;
+  --mw-surface-raised: #10171e;
+  --mw-surface-glass: rgba(12,17,22,.82);
+  --mw-text-primary: #f0eadf;
+  --mw-text-muted: #7f8a95;
+  --mw-accent-primary: #c93628;
+  --mw-accent-secondary: #9e7138;
+  --mw-state-success: #3d9d6d;
   --mw-state-warning: #d49a3a;
-  --mw-state-error: #b8443b;
+  --mw-state-error: #c4443b;
   --mw-focus-ring: #7d6ce0;
-  --mw-radius-sm: 10px;
-  --mw-radius-md: 18px;
-  --mw-radius-lg: 28px;
+  --mw-radius-sm: 2px;
+  --mw-radius-md: 6px;
+  --mw-radius-lg: 10px;
   --mw-space-1: 4px;
   --mw-space-2: 8px;
   --mw-space-3: 12px;
@@ -20,14 +21,19 @@
   --mw-space-6: 24px;
   --mw-space-8: 32px;
   --mw-space-12: 48px;
-  --mw-shadow-instrument: 0 20px 80px rgba(0,0,0,.38);
+  --mw-shadow-instrument: 0 24px 90px rgba(0,0,0,.5);
+  --mw-motion-fast: 160ms;
+  --mw-motion-medium: 320ms;
+  --mw-motion-slow: 900ms;
 }
 
-[data-mw-theme='cyan'] { --mw-accent-primary: #25a9d6; }
-[data-mw-theme='amber'] { --mw-accent-primary: #c99137; }
-[data-mw-theme='emerald'] { --mw-accent-primary: #3f9d70; }
-[data-mw-theme='violet'] { --mw-accent-primary: #7654b8; }
-[data-mw-theme='neutral'] { --mw-accent-primary: #90969d; }
+[data-mw-theme='crimson'] { --mw-accent-primary: #c93628; --mw-accent-secondary: #9e7138; }
+[data-mw-theme='myth-fade'] { --mw-accent-primary: #d7281e; --mw-accent-secondary: #ad7637; --mw-surface-void:#040506; --mw-surface-panel:#090c0f; --mw-surface-raised:#101419; }
+[data-mw-theme='cyan'] { --mw-accent-primary: #25a9d6; --mw-accent-secondary:#6b8192; }
+[data-mw-theme='amber'] { --mw-accent-primary: #c99137; --mw-accent-secondary:#8f6a3a; }
+[data-mw-theme='emerald'] { --mw-accent-primary: #3f9d70; --mw-accent-secondary:#657d68; }
+[data-mw-theme='violet'] { --mw-accent-primary: #7654b8; --mw-accent-secondary:#7e6b92; }
+[data-mw-theme='neutral'] { --mw-accent-primary: #90969d; --mw-accent-secondary:#737b83; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 1ms !important; transition-duration: 1ms !important; }
