@@ -1,0 +1,8 @@
+phase: evidence
+issue: 15
+scope:
+  - showcase_assets
+  - canonical_mirror
+  - icon_source_ownership
+  - image_classification
+  - golden_evidence_labels
