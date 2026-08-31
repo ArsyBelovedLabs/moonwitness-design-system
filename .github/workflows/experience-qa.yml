@@ -1,0 +1,119 @@
+name: Experience Browser QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [dev, main]
+    paths:
+      - ".github/workflows/experience-qa.yml"
+      - ".storybook/**"
+      - "src/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/experience-qa.yml"
+      - ".storybook/**"
+      - "src/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  storybook-browser-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.24.0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24.20.0
+          cache: pnpm
+      - name: Install design-system dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build Storybook
+        run: pnpm build-storybook
+      - name: Create isolated browser-QA project
+        run: |
+          mkdir -p "$RUNNER_TEMP/mw-browser-qa"
+          printf '{"private":true,"type":"module"}\n' > "$RUNNER_TEMP/mw-browser-qa/package.json"
+      - name: Install Playwright + axe outside production graph
+        working-directory: ${{ runner.temp }}/mw-browser-qa
+        run: pnpm add --lockfile=false --ignore-scripts @playwright/test@latest @axe-core/playwright@latest serve@latest
+      - name: Install Chromium
+        working-directory: ${{ runner.temp }}/mw-browser-qa
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Start static Storybook
+        working-directory: ${{ runner.temp }}/mw-browser-qa
+        run: |
+          pnpm exec serve -s "$GITHUB_WORKSPACE/storybook-static" -l 6006 > "$RUNNER_TEMP/mw-storybook-server.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/mw-storybook-server.pid"
+          for i in $(seq 1 40); do
+            if curl -fsS http://127.0.0.1:6006/index.json >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat "$RUNNER_TEMP/mw-storybook-server.log"
+          exit 1
+      - name: Run accessibility, reduced-motion, and screenshot smoke
+        working-directory: ${{ runner.temp }}/mw-browser-qa
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/qa-artifacts"
+          node --input-type=module <<'NODE'
+          import { chromium } from '@playwright/test';
+          import AxeBuilder from '@axe-core/playwright';
+
+          const base = 'http://127.0.0.1:6006';
+          const index = await (await fetch(`${base}/index.json`)).json();
+          const entries = Object.values(index.entries ?? {}).filter((entry) => {
+            const title = String(entry.title ?? '');
+            return title.startsWith('MoonWitness/00 ') || title.startsWith('MoonWitness/01 ') || title.startsWith('MoonWitness/02 ');
+          }).slice(0, 12);
+
+          if (entries.length === 0) throw new Error('No numbered MoonWitness workbench/master stories found');
+
+          const browser = await chromium.launch();
+          const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+          const page = await context.newPage();
+          const failures = [];
+
+          for (let i = 0; i < entries.length; i += 1) {
+            const entry = entries[i];
+            const url = `${base}/iframe.html?id=${encodeURIComponent(entry.id)}&viewMode=story`;
+            await page.goto(url, { waitUntil: 'networkidle' });
+            const results = await new AxeBuilder({ page }).analyze();
+            const severe = results.violations.filter((v) => v.impact === 'critical' || v.impact === 'serious');
+            if (severe.length) {
+              failures.push({ id: entry.id, violations: severe.map((v) => ({ id: v.id, impact: v.impact, nodes: v.nodes.length })) });
+            }
+            if (i < 6) {
+              await page.screenshot({ path: `${process.env.GITHUB_WORKSPACE}/qa-artifacts/${String(i + 1).padStart(2, '0')}-${entry.id.replace(/[^a-z0-9-]+/gi, '-')}.png`, fullPage: true });
+            }
+          }
+
+          await page.emulateMedia({ reducedMotion: 'reduce' });
+          const reducedTarget = entries[0];
+          await page.goto(`${base}/iframe.html?id=${encodeURIComponent(reducedTarget.id)}&viewMode=story`, { waitUntil: 'networkidle' });
+          const reducedPreference = await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
+          if (!reducedPreference) throw new Error('Reduced-motion media emulation was not honored');
+
+          await context.close();
+          await browser.close();
+          console.log(`Checked ${entries.length} MoonWitness stories`);
+          if (failures.length) {
+            console.error(JSON.stringify(failures, null, 2));
+            process.exit(1);
+          }
+          NODE
+      - name: Upload QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: moonwitness-experience-qa
+          path: qa-artifacts
+          if-no-files-found: warn
+          retention-days: 14
