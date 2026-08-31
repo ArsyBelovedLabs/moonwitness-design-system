@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "editor": "OpenPencil 0.12.x design-JSX",
+  "preferredSurface": "https://pencil.moonwitness.biz.id/",
+  "gates": ["COMPONENT_SYSTEM_READY", "UX_FLOW_READY"],
+  "publicNavigation": [
+    "Monthly Report",
+    "Spread Map",
+    "Disaster Map",
+    "Correlation",
+    "Practice-Level Review",
+    "Evidence",
+    "Four Revelation Lens",
+    "Candidate Pipeline"
+  ],
+  "commandCenterNavigation": ["Overview", "Research Runs", "Operations", "Settings"],
+  "screens": [
+    {"id":"MYTH-HOME","name":"Observatory Home Experience","maturity":"EXISTING","source":"pages/myth-observatory-home.jsx","route":"report/2026-08","note":"Monthly Report landing; not a ninth route"},
+    {"id":"MYTH-01","name":"Monthly Report — August 2026","maturity":"EXISTING","source":"pages/myth-monthly-report.jsx"},
+    {"id":"MYTH-02","name":"Observation Ledger","maturity":"EXISTING","source":"pages/myth-observation-ledger.jsx"},
+    {"id":"MYTH-04","name":"Spread Map","maturity":"EXISTING","source":"pages/myth-spread-map.jsx"},
+    {"id":"MYTH-05","name":"Disaster Map","maturity":"EXISTING","source":"pages/myth-disaster-map.jsx"},
+    {"id":"MYTH-06","name":"Correlation Engine","maturity":"EXISTING","source":"pages/myth-correlation.jsx"},
+    {"id":"MYTH-08","name":"Practice-Level Review","maturity":"EXISTING","source":"pages/myth-practice-review.jsx"},
+    {"id":"MYTH-09","name":"Evidence Ledger","maturity":"EXISTING","source":"pages/myth-evidence-ledger.jsx"},
+    {"id":"MYTH-11","name":"Four Revelation Lens","maturity":"EXISTING","source":"pages/myth-four-revelation-lens.jsx"},
+    {"id":"MYTH-13","name":"Candidate Pipeline","maturity":"EXISTING","source":"pages/myth-candidate-pipeline.jsx"},
+    {"id":"CC-01","name":"Command Center — Overview","maturity":"EXISTING","source":"pages/command-center-overview.jsx"},
+    {"id":"CC-02","name":"Command Center — Research Runs","maturity":"EXISTING","source":"pages/command-center-research-runs.jsx"},
+    {"id":"CC-03","name":"Command Center — Operations","maturity":"EXISTING","source":"pages/command-center-operations.jsx"},
+    {"id":"CC-04","name":"Command Center — Settings","maturity":"EXISTING","source":"pages/command-center-settings.jsx"},
+    {"id":"SHARED-STATES","name":"Shared State Reference","maturity":"COMPONENT ONLY","source":"states/shared-states.jsx"},
+    {"id":"SHARED-MOBILE","name":"Mobile Instrument Recomposition","maturity":"COMPONENT ONLY","source":"responsive/mobile.jsx"}
+  ],
+  "immutableRules": {
+    "causality": "Temporal/geographic proximity does not establish causation.",
+    "revelationLens": ["Al-Qur'an", "Injil / Gospel", "Taurat / Torah", "Zabur / Psalms"],
+    "practiceReview": "PRACTICE-LEVEL REVIEW ONLY",
+    "august2026": {
+      "mythosActivity": 90,
+      "ritualActivity": 90,
+      "mediaPropagation": 95,
+      "causalProof": "0–15/100",
+      "causalityFindings": 7,
+      "observations": 17,
+      "practiceReviewIssues": 12,
+      "evidenceSources": 15,
+      "globalEclipses": 2,
+      "indonesiaVisibleEclipses": 0
+    }
+  }
+}
