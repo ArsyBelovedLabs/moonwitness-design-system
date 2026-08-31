@@ -1,0 +1,14 @@
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import { MoonWitnessProvider } from './MoonWitnessProvider'
+import { CausalityLattice, EventPulse, SignalWave, StateVector, TruthAperture } from './DataVizPrimitives'
+import { CausalityGuardrail, SignalBeacon } from './Observatory'
+import { InstrumentGrid, InstrumentHeader } from './PagePrimitives'
+
+const meta = { title: 'MoonWitness/Data Visualization', parameters: { layout: 'fullscreen' } } satisfies Meta
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const SignatureInstruments: Story = { render: () => <MoonWitnessProvider theme="myth-fade"><div className="mw-page-stage"><InstrumentHeader code="DATA / SIGNATURE" title="MoonWitness Data Instruments" subtitle="Use physical/instrument metaphors for signature surfaces; reserve generic charts for utility contexts." status={<SignalBeacon label="VISUAL SYSTEM"/>}/><div className="mw-page-stage__body"><InstrumentGrid><div className="span-4"><TruthAperture score={87} detail="bounded confidence"/></div><div className="span-8"><CausalityLattice nodes={[{id:'a',x:14,y:24,label:'OBS',value:'17',tone:'active'},{id:'b',x:42,y:18,label:'MEDIA',value:'95'},{id:'c',x:67,y:46,label:'EVENT',value:'CTX',tone:'warning'},{id:'d',x:42,y:74,label:'DISTANCE',value:'km'},{id:'e',x:84,y:72,label:'REVIEW',value:'0–15',tone:'success'}]} edges={[{from:'a',to:'b',strength:.8},{from:'b',to:'c',strength:.5,dashed:true},{from:'a',to:'c',strength:.4,dashed:true},{from:'c',to:'d',strength:.65},{from:'d',to:'e',strength:.9}]}/></div><div className="span-6"><SignalWave label="SIGNAL INTELLIGENCE" detail="temporal stream" values={[12,18,15,28,25,41,33,47,52,45,61,38,48,72,68,55,84,71,76,64]}/></div><div className="span-3"><StateVector items={[{label:'Integrity',value:92,tone:'success'},{label:'Proximity',value:64,tone:'warning'},{label:'Noise',value:18},{label:'Review',value:78,tone:'active'}]}/></div><div className="span-3" style={{display:'grid',gap:10}}><EventPulse label="OBSERVATIONS" value="17" detail="published"/><EventPulse label="EVIDENCE" value="15" detail="sources" tone="success"/></div><div className="span-12"><CausalityGuardrail/></div></InstrumentGrid></div></div></MoonWitnessProvider> }
+
+export const CyanObservatory: Story = { render: () => <MoonWitnessProvider theme="cyan"><div className="mw-page-stage"><TruthAperture score={92} label="OBSERVATORY CONFIDENCE" detail="signal window" tone="active"/></div></MoonWitnessProvider> }
+export const AmberReview: Story = { render: () => <MoonWitnessProvider theme="amber"><div className="mw-page-stage"><CausalityLattice nodes={[{id:'1',x:18,y:50,label:'CLAIM',tone:'active'},{id:'2',x:48,y:24,label:'PROXIMITY',tone:'warning'},{id:'3',x:48,y:76,label:'EVIDENCE',tone:'success'},{id:'4',x:82,y:50,label:'FINDING',tone:'neutral'}]} edges={[{from:'1',to:'2',dashed:true},{from:'1',to:'3'},{from:'2',to:'4',dashed:true},{from:'3',to:'4',strength:.9}]}/></div></MoonWitnessProvider> }
