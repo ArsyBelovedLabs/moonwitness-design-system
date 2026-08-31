@@ -84,19 +84,24 @@ This repository owns reusable design tokens, themes, primitives, experimental ob
 
 All reusable components are application-agnostic and consume semantic tokens rather than MoonWitness API/database contracts.
 
+## Toolchain
+
+Development and CI use Node `24.20.0` with pnpm `11.24.0`. The checked-in
+`pnpm-lock.yaml` is the install source of truth; use `pnpm install --frozen-lockfile`.
+
 ## Storybook
 
 ```bash
-npm install
-npm run storybook
+pnpm install --frozen-lockfile
+pnpm storybook
 ```
 
 Production verification:
 
 ```bash
-npm run typecheck
-npm run build
-npm run build-storybook
+pnpm typecheck
+pnpm build
+pnpm build-storybook
 ```
 
 Storybook now contains:

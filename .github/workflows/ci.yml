@@ -10,10 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.24.0
       - uses: actions/setup-node@v5
         with:
-          node-version: 22
-      - run: npm install
-      - run: npm run typecheck
-      - run: npm run build
-      - run: npm run build-storybook
+          node-version: 24.20.0
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm build
+      - run: pnpm build-storybook
