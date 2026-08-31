@@ -32,4 +32,29 @@ They do not:
 - supersede the frozen Blueprint;
 - supersede `moonwitness-frontend-platform` as canonical reusable UI owner.
 
-For page-level design work, classify each reference as `EXISTING`, `ALIGNED TARGET`, `GATED FUTURE`, or `COMPONENT ONLY` according to the Blueprint application information architecture before treating it as an implementation target.
+For page-level design work, use the Blueprint execution control:
+
+- `moonwitness-blueprint/07-ui-ux/APPLICATION-INFORMATION-ARCHITECTURE-V1.md`
+- `moonwitness-blueprint/07-ui-ux/FIGMA-SHOWCASE-SCREEN-MATRIX-V1.md`
+
+The matrix is the authoritative implementation-aligned checklist for deciding whether a visual reference is `EXISTING`, `ALIGNED TARGET`, `GATED FUTURE`, or `COMPONENT ONLY`, and for deciding which dedicated one-screen-per-image reference should be generated next.
+
+## Current classification
+
+| Showcase file | Matrix classification | Use |
+| --- | --- | --- |
+| `01_login_archive_access.png` | `GATED FUTURE` | authentication concept only; no canonical global login/app launcher is defined today |
+| `02_command_center.png` | `EXISTING` reference needing rework | regenerate against the actual four-route Command Center IA |
+| `03_celestial_observatory.png` | `COMPONENT ONLY` | OrbitalCore / TemporalOrrery visual reference; not a current public route |
+| `04_evidence_ledger.png` | `EXISTING` | Evidence Ledger reference |
+| `05_chronology_track.png` | `EXISTING` / partial | valid chronology reference; not sufficient as the full Correlation Engine page |
+| `06_disaster_map.png` | `EXISTING` | Disaster Map reference |
+| `07_reports.png` | `EXISTING` reference needing rework | regenerate as dedicated August 2026 Monthly Report golden page |
+| `08_mobile_instrument_mode.png` | `COMPONENT ONLY` | responsive composition reference |
+| `09_component_library.png` | `COMPONENT ONLY` | shared component reference |
+| `10_data_visualizations.png` | `COMPONENT ONLY` | signature data-instrument reference |
+| `11_settings_theme_lab.png` | `COMPONENT ONLY` / needs rework | Theme/Visual Lab only; never substitute for Command Center Settings |
+
+## Generation rule
+
+Golden page references must be generated **one screen per image**. Contact sheets remain index/archive aids only and must never replace an individual golden screen.
