@@ -19,5 +19,17 @@ for documentation and review.
 | `10_data_visualizations.png` | `images/moonwitness_august_2026_analytics_dashboard.png` |
 | `11_settings_theme_lab.png` | `images/moonwitness_ritual_tech_observatory.png` |
 
-These are reference/showcase assets only. They do not replace the executable
-Storybook stories in `src/components/`.
+## Authority
+
+These files are **visual reference/showcase assets only**.
+
+They do not:
+
+- create application product scope;
+- prove that a screen or capability is implemented;
+- replace executable Storybook stories;
+- replace Figma review;
+- supersede the frozen Blueprint;
+- supersede `moonwitness-frontend-platform` as canonical reusable UI owner.
+
+For page-level design work, classify each reference as `EXISTING`, `ALIGNED TARGET`, `GATED FUTURE`, or `COMPONENT ONLY` according to the Blueprint application information architecture before treating it as an implementation target.
