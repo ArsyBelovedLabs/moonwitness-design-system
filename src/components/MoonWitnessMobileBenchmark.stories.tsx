@@ -40,6 +40,7 @@ function MobileInstrumentFrame({ activeMode, children }: { activeMode: MobileMod
   return <MoonWitnessProvider theme="myth-fade" style={{ minHeight: '100vh', padding: '34px 12px' }}>
     <div className="mw-mobile-instrument">
       <div className="mw-mobile-instrument__screen">
+        <div className="mw-mobile-instrument__statusline"><span>FIELD UNIT / {String(mobileModes.findIndex(mode => mode.id === activeMode) + 1).padStart(2, '0')}</span><span>ONE-HAND MODE</span></div>
         <InstrumentHeader
           code={`MOBILE / ${String(mobileModes.findIndex(mode => mode.id === activeMode) + 1).padStart(2, '0')}`}
           title={mobileModes.find(mode => mode.id === activeMode)?.label || 'Observatory'}
